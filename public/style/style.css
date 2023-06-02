@@ -1,0 +1,26 @@
+/* Write your css here */
+
+html {
+  box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+body {
+  margin: 0 !important;
+  padding: 0 !important;
+  min-height: 100vh;
+  display: flex;
+  place-content: center;
+  flex-wrap: wrap;
+  background-color: rgba(0, 0, 0, 0.992);
+}
+
+h1 {
+  font-size: 6rem;
+  color: #fff;
+}
