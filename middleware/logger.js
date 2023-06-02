@@ -1,8 +1,8 @@
 const path = require('path');
 const fs = require('fs');
 const fsPromises = require('fs').promises;
-const { v4: uuid } = require('uuid');
 const { format } = require('date-fns');
+const { v4: uuid } = require('uuid');
 
 const logEvents = async (message, fileName) => {
   const logItem = `${format(new Date(), 'dd-MM-yyyy\tHH:mm:ss')}\t${uuid()}\t${message}\n`;
