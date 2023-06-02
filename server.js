@@ -2,8 +2,8 @@ const path = require('path');
 const express = require('express');
 const cookieParser = require('cookie-parser');
 // const cors = require('cors');
-// const { logger } = require('./middleware/logger');
-// const corsOptions = require('./config/corsOptions');
+// const { logger } = require('./middleware/logger.js');
+// const corsOptions = require('./config/corsOptions.js');
 
 const app = express();
 
