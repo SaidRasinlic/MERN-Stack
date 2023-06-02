@@ -1,0 +1,41 @@
+{
+  "env": {
+    "browser": true,
+    "es6": true,
+    "jest": true
+  },
+  "parser": "@babel/eslint-parser",
+  "parserOptions": {
+    "requireConfigFile": false,
+    "ecmaVersion": 2018,
+    "sourceType": "module"
+  },
+  "extends": ["airbnb-base", "plugin:import/recommended"],
+  "plugins": ["import"],
+  "rules": {
+    "import/no-unresolved": "off",
+    "no-shadow": "off",
+    "func-names": "warn",
+    "object-shorthand": "warn",
+    "global-require": "warn",
+    "import/no-extraneous-dependencies": [
+      "error", {
+         "devDependencies": false,
+         "optionalDependencies": false,
+         "peerDependencies": false
+      }
+  ]
+  },
+  "ignorePatterns": [
+    "dist/",
+    "build/",
+		"dist/**/*",
+		"mobile/**/*",
+		"node_modules/**/*",
+		"node-mobile/**/*",
+		"node-native/**/*",
+		"obj/**/*",
+		"styles/**/*",
+		"themes/**/*"
+  ]
+}
