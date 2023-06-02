@@ -1,14 +1,14 @@
 const path = require('path');
 const express = require('express');
 const cookieParser = require('cookie-parser');
-const cors = require('cors');
-const { logger } = require('./middleware/logger');
-const corsOptions = require('./config/corsOptions');
+// const cors = require('cors');
+// const { logger } = require('./middleware/logger');
+// const corsOptions = require('./config/corsOptions');
 
 const app = express();
 
-app.use(logger);
-app.use(cors(corsOptions));
+// app.use(logger);
+// app.use(cors(corsOptions));
 app.use(express.json());
 app.use(cookieParser());
 app.use('/', express.static(path.join(__dirname, '/public')));
