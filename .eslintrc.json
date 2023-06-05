@@ -23,9 +23,8 @@
          "devDependencies": false,
          "optionalDependencies": false,
          "peerDependencies": false
-      }
-  ],
-  "engines": { "node": ">=14.x" }
+      },
+  ]
   },
   "ignorePatterns": [
     "dist/",
