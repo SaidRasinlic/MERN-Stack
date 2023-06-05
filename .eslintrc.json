@@ -23,7 +23,7 @@
          "devDependencies": false,
          "optionalDependencies": false,
          "peerDependencies": false
-      },
+      }
   ]
   },
   "ignorePatterns": [
