@@ -24,6 +24,11 @@
          "optionalDependencies": false,
          "peerDependencies": false
       }
+  ],
+  "no-underscore-dangle": [
+    "error", { 
+      "allow": ["_id"] 
+    }
   ]
   },
   "ignorePatterns": [
