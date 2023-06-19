@@ -6,7 +6,7 @@ const getAllNotes = asyncHandler(async (req, res) => {
   const notes = await Note.find().lean().exec();
 
   if (!notes?.length) {
-    return res.status().json({ message: 'No notes found.' });
+    return res.status(200).json({ message: 'No notes found. Oh shit!' });
   }
 
   const notesWithUser = await Promise.all(notes.map(async (note) => {
@@ -14,7 +14,7 @@ const getAllNotes = asyncHandler(async (req, res) => {
     return { ...note, username: user.username };
   }));
 
-  return res.status(200).json({ message: notesWithUser });
+  return res.status(200).json(notesWithUser);
 });
 
 const createNewNote = asyncHandler(async (req, res) => {
@@ -45,18 +45,19 @@ const updateNote = asyncHandler(async (req, res) => {
   } = req.body;
 
   if (!id || !user || !title || !text || typeof completed !== 'boolean') {
-    res.status(400).json({ message: 'All data fields are required.' });
+    return res.status(400).json({ message: 'All data fields are required.' });
   }
 
-  const note = await Note.findOne({ title }).lean().exec();
+  // Confirm note exists to update
+  const note = await Note.findById(id).exec();
 
   if (!note) {
     return res.status(400).json({ message: 'Note not found.' });
   }
   const duplicate = await Note.findOne({ title }).lean().exec();
 
-  if (duplicate && duplicate?._id !== id) {
-    res.status(409).json({ message: 'Duplicate titles are not allowed.' });
+  if (duplicate && duplicate?._id.toString() !== id) {
+    return res.status(409).json({ message: 'Duplicate titles are not allowed.' });
   }
 
   note.user = user;
