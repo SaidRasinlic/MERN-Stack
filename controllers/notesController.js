@@ -1,8 +1,7 @@
-const asyncHandler = require('express-async-handler');
 const Note = require('../models/Note');
 const User = require('../models/User');
 
-const getAllNotes = asyncHandler(async (req, res) => {
+const getAllNotes = async (req, res) => {
   const notes = await Note.find().lean().exec();
 
   if (!notes?.length) {
@@ -15,16 +14,17 @@ const getAllNotes = asyncHandler(async (req, res) => {
   }));
 
   return res.status(200).json(notesWithUser);
-});
+};
 
-const createNewNote = asyncHandler(async (req, res) => {
+const createNewNote = async (req, res) => {
   const { user, title, text } = req.body;
 
   if (!user || !title || !text) {
     return res.status(400).json({ message: 'All data fields are required.' });
   }
 
-  const duplicate = await Note.findOne({ title }).lean().exec();
+  // Check for duplicate title
+  const duplicate = await Note.findOne({ title }).collation({ locale: 'en', strength: 2 }).lean().exec();
 
   if (duplicate) {
     res.status(409).json({ message: 'Duplicate notes are not allowed.' });
@@ -37,9 +37,9 @@ const createNewNote = asyncHandler(async (req, res) => {
   }
 
   return res.status(201).json({ message: 'Note successfully created.' });
-});
+};
 
-const updateNote = asyncHandler(async (req, res) => {
+const updateNote = async (req, res) => {
   const {
     id, user, title, text, completed,
   } = req.body;
@@ -68,9 +68,9 @@ const updateNote = asyncHandler(async (req, res) => {
   const updatedNote = await note.save();
 
   return res.status(201).json(updatedNote);
-});
+};
 
-const deleteNote = asyncHandler(async (req, res) => {
+const deleteNote = async (req, res) => {
   const { id } = req.body;
 
   if (!id) {
@@ -82,7 +82,7 @@ const deleteNote = asyncHandler(async (req, res) => {
   const result = note.deleteOne();
 
   return res.status(201).json({ message: `Note "${result.title}" with the ID "${result.id}" is successfully deleted` });
-});
+};
 
 module.exports = {
   getAllNotes,
