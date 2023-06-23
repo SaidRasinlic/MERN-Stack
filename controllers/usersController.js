@@ -1,9 +1,8 @@
-const asyncHandler = require('express-async-handler');
 const bcrypt = require('bcrypt');
 const User = require('../models/User');
 const Note = require('../models/Note');
 
-const getAllUsers = asyncHandler(async (req, res) => {
+const getAllUsers = async (req, res) => {
   const users = await User.find().select('-password').lean();
 
   if (!users?.length) {
@@ -11,9 +10,9 @@ const getAllUsers = asyncHandler(async (req, res) => {
   }
 
   return res.status(200).json(users);
-});
+};
 
-const createNewUser = asyncHandler(async (req, res) => {
+const createNewUser = async (req, res) => {
   const { username, password, roles } = req.body;
   console.log(username, password, roles, '===========');
 
@@ -21,7 +20,8 @@ const createNewUser = asyncHandler(async (req, res) => {
     return res.status(400).json({ message: 'All fields are required.' });
   }
 
-  const duplicate = await User.findOne({ username }).lean().exec();
+  // Check for duplicate username
+  const duplicate = await User.findOne({ username }).collation({ locale: 'en', strength: 2 }).lean().exec();
 
   if (duplicate) {
     return res.status(409).json(`Username ${username} already exists.`);
@@ -37,9 +37,9 @@ const createNewUser = asyncHandler(async (req, res) => {
   }
 
   return res.status(201).json({ message: `User ${username} successfully created.` });
-});
+};
 
-const updateUser = asyncHandler(async (req, res) => {
+const updateUser = async (req, res) => {
   const {
     id, username, roles, active, password,
   } = req.body;
@@ -73,9 +73,9 @@ const updateUser = asyncHandler(async (req, res) => {
   const updatedUser = await user.save();
 
   return res.json(`${updatedUser.username} successfully updated.`);
-});
+};
 
-const deleteUser = asyncHandler(async (req, res) => {
+const deleteUser = async (req, res) => {
   const { id } = req.body;
 
   if (!id) {
@@ -97,7 +97,7 @@ const deleteUser = asyncHandler(async (req, res) => {
   const result = await user.deleteOne();
 
   return res.status(201).json({ message: `Username "${result.username}" with ID: "${result.id}" is successfully deleted.` });
-});
+};
 
 module.exports = {
   getAllUsers,
