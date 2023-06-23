@@ -1,6 +1,6 @@
-# NodeJS-Course
+# MERN-Stack-Backend
 
-To be added...
+To be added
 
 
 ## Live Demo
@@ -25,25 +25,23 @@ To get a local copy up and running follow these simple example steps.
 
 ### Prerequisites
 
-To be added...
-<!-- - Laptop or Desktop
+- Laptop or Desktop
 - Web Browser
 - Node.js (installed and set up)
 - IDE (preferably Visual Studio Code)
-- Programming Knowledge -->
+- Programming Knowledge
 
 ### Installation, Setup and Usage
 
-To be added...
-<!-- - Clone this [repo](https://github.com/SaidRasinlic/NodeJS-Course)
-- Navigate to the correct directory `cd NodeJS-Course/server` (case sensitive)
+- Clone this [repo](https://github.com/SaidRasinlic/MERN-Stack-Backend)
+- Navigate to the correct directory `cd mern-stack-backend` (case insensitive)
 - In your terminal run the following commands:
   - `yarn install`
 - Run `yarn dev` to start your server and build the required configuration
-- Enter `http://localhost:3000/` or `localhost:3000` on your browser to run the app locally
+- Enter `http://localhost:3500/` or `localhost:3500` on your browser to run the app locally
 
 
-**<p align="center">Congratulations, app should run successfully 🎉!</p>** -->
+**<p align="center">Congratulations, app should run successfully 🎉!</p>**
 
 ## Author
 
@@ -66,7 +64,7 @@ Give a ⭐️ if you like this project!
 
 ## Acknowledgments
 
-- S.R.
+- StackOverFlow and YouTube GanG 🙌
 
 ## 📝 License
 
