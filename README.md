@@ -5,7 +5,7 @@
 
 ## Link to the Fronted
 
-- Check out the MERN-Stack-Frontend [repository](https://github.com/SaidRasinlic/MERN-Stack-Fronted.git)
+- Check out the MERN-Stack-Frontend [repository](https://github.com/SaidRasinlic/MERN-Stack-Frontend.git)
 
 
 ## Live Demo
