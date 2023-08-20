@@ -3,14 +3,14 @@
 > This is Back-End API that is connected to the Front-End React UI. This app represents 1/2 (one half) of the full application required to properly work, so please make sure you connect it properly to the Front-End.
 
 
+## Live Demo
+
+[Live Demo Link](https://mern-technotes-frontend.onrender.com/)
+
+
 ## Link to the Fronted
 
 - Check out the MERN-Stack-Frontend [repository](https://github.com/SaidRasinlic/MERN-Stack-Frontend.git)
-
-
-## Live Demo
-
-N/A
 
 
 ## Screenshot
